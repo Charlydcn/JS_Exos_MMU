@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Random box generator</title>
+</head>
+<body>
+
+    <div id="box-container"></div>
+
+<script>
+
+    function generateRandomColor() {
+
+        var randomColor = Math.floor(Math.random()*16777215).toString(16)
+        return "#" + randomColor
+    }    
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "ArrowDown") {
+
+            const box = document.createElement("div")
+            const boxContainer = document.getElementById('box-container')
+
+            box.classList.add('box')
+            box.style.width = "60px"
+            box.style.height = "60px"
+            box.style.backgroundColor = generateRandomColor()
+
+            boxContainer.appendChild(box)
+
+        } else if (event.key === "ArrowUp") {
+
+            const boxContainer = document.getElementById('box-container');
+            const lastBox = boxContainer.lastChild;
+
+            if (lastBox) {
+
+                boxContainer.removeChild(lastBox);
+            }
+        }
+
+    document.addEventListener("click", function(event) {
+        var boxClicked = event.target.closest('.box')
+        boxClicked.style.backgroundColor = 'black'
+    })
+
+});
+    
+
+
+</script>
+
+
+
+</body>
+</html>
