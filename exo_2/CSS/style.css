@@ -1,0 +1,31 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#box_container {
+    display: flex;
+    width: 410px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    margin:auto;
+}
+
+.box {
+    background-color: rgb(136, 174, 136);
+    color: rgb(255, 255, 255);
+    height:200px;
+    width:200px;
+    display: flex;    
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    transition: 1s;
+}
+
+.box_clicked {
+    transform: scale(.9);
+    transform: rotate(360deg);
+    background-color: rgb(173, 37, 37);
+}
