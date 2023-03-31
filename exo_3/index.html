@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    
+    <div id="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+    <div id="turn"></div>
+    <div id="winMsg"></div>
+    <button id="restartBtn">Restart</button>
+
+    <script>
+
+        var count = 0
+        var turn = document.getElementById('turn')
+        const board = document.getElementById('board')
+        var gameOver = false
+        var restartBtn = document.getElementById('restartBtn')
+
+        // CHECK GAME OVER _____________________________________________________
+    
+        function checkGameOver() {
+
+            var cells = board.querySelectorAll('.cell')
+            var clickedCells = board.querySelectorAll('.cell-clicked')
+            
+            if (cells.length == clickedCells.length) {
+
+                gameOver = true
+                turn.innerHTML = "Partie terminée"
+            }
+        }
+
+        // BOUTON RESET _____________________________________________________
+
+        restartBtn.addEventListener('click', function resetGame() {
+
+            cells = board.querySelectorAll('.cell-clicked')
+
+            cells.forEach(function(cell) {
+
+                cell.innerHTML = ""
+                cell.classList.remove('cell-clicked')
+            })
+            
+            turn.innerHTML = "C'est au tour du joueur X"
+        })
+
+        // CLICK SUR CELL _____________________________________________________
+
+        document.addEventListener('click', function handleClick(event) {
+            var cell = event.target.closest('.cell')
+
+            if (cell) {
+
+                if (cell.classList.contains('cell-clicked')) {
+
+                    alert('Case déjà cliquée')
+                    
+                } else {
+
+                    if ((count % 2) == 0) {
+
+                        turn.innerHTML = "C'est au tour du joueur O"
+                        cell.innerHTML = "<i class='fa-solid fa-xmark'></i>"
+
+                    } else {
+
+                        turn.innerHTML = "C'est au tour du joueur X"
+                        cell.innerHTML = "<i class='fa-solid fa-o'></i>"
+
+                    }
+
+                cell.classList.add('cell-clicked')
+                count++
+                checkGameOver()
+
+                } 
+            }
+        })
+
+
+
+    </script>
+
+</body>
+</html>
