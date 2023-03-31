@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency conversion</title>
+</head>
+<body>
+    
+    <label>
+        Montant en euros:
+        <input type="number" id="euros"min="0" step="0.05">
+    </label>
+
+    <p id="result"></p>
+  
+  <script>
+
+    const rate = 6.55957
+    
+    const input = document.getElementById('euros')
+    const result = document.getElementById('result')
+    
+    input.addEventListener('input', function() {
+        
+        const euros = parseFloat(input.value)
+        if (isNaN(euros)) {
+            result.textContent = "Veuillez entrer un montant en chiffres !"
+        } else {
+            const francs = (euros * rate).toFixed(2)
+            result.textContent = francs + " francs"
+        }
+    });
+
+  </script>
+
+</body>
+</html>
