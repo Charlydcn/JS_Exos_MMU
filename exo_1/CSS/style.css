@@ -1,0 +1,15 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.box {
+    background-color: rgb(136, 174, 136);
+    color: rgb(255, 255, 255);
+    height:200px;
+    width:200px;
+    display: flex;    
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
